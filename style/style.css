@@ -1,7 +1,6 @@
 #container {
     width: 532px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 125px);
     grid-gap: 10px;
@@ -9,5 +8,9 @@
 }
 
 .grid {
+    display: flex;
+    font-size: 2em;
     border: 1px solid black;
+    align-items: center;
+    justify-content: center;
 }
