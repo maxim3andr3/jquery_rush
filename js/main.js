@@ -1,3 +1,5 @@
 $(document).ready(function() {
-    $('body').gridCreation();
+    $('#container').gridCreation();
+    $('#container').startedCells();
+    $('#container').startedCells();
 })
