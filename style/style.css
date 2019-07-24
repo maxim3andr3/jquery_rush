@@ -1,0 +1,13 @@
+#container {
+    width: 532px;
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 125px);
+    grid-gap: 10px;
+    background-color: dodgerblue;
+}
+
+.grid {
+    border: 1px solid black;
+}
