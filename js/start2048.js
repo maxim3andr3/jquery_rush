@@ -124,60 +124,96 @@
 
         function mergeLeft() {
             for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 0; columns < 4; columns++) {
-                    var val1 = $('#' + rows + columns).text();
-                    var val2 = $('#' + rows + (columns + 1)).text();
+                var columns = 0;
+                while ($('#' + rows + columns).text() == '' && columns < 4) {
+                    columns++;
+                }
 
-                    if (val1 && val1 === val2) {
-                        var newValue = val1 * 2;
-                        $('#' + rows + columns).text(newValue);
-                        $('#' + rows + (columns + 1)).text('');
-                    };
+                var nextColumns = columns + 1;
+
+                while ($('#' + rows + nextColumns).text() == '' && nextColumns < 4) {
+                    nextColumns++;
+                }
+
+                var val1 = $('#' + rows + columns).text();
+                var val2 = $('#' + rows + nextColumns).text();
+
+                if (val1 && val1 === val2) {
+                    var newValue = val1 * 2;
+                    $('#' + rows + columns).text(newValue);
+                    $('#' + rows + nextColumns).text('');
                 };
             };
         };
 
         function mergeTop() {
-            for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 0; columns < 4; columns++) {
-                    var val1 = $('#' + rows + columns).text();
-                    var val2 = $('#' + (rows + 1) + columns).text();
+            for (var columns = 0; columns < 4; columns++) {
+                var rows = 0;
+                while ($('#' + rows + columns).text() == '' && rows < 4) {
+                    rows++;
+                }
 
-                    if (val1 && val1 === val2) {
-                        var newValue = val1 * 2;
-                        $('#' + rows + columns).text(newValue);
-                        $('#' + (rows + 1) + columns).text('');
-                    };
+                var nextRows = rows + 1;
+
+                while ($('#' + nextRows + columns).text() == '' && nextRows < 4) {
+                    nextRows++;
+                }
+
+                var val1 = $('#' + rows + columns).text();
+                var val2 = $('#' + nextRows + columns).text();
+
+                if (val1 && val1 === val2) {
+                    var newValue = val1 * 2;
+                    $('#' + rows + columns).text(newValue);
+                    $('#' + nextRows + columns).text('');
                 };
             };
         };
 
         function mergeRight() {
             for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 3; columns >= 0; columns--) {
-                    var val1 = $('#' + rows + columns).text();
-                    var val2 = $('#' + rows + (columns - 1)).text();
+                var columns = 3;
+                while ($('#' + rows + columns).text() == '' && columns >= 0) {
+                    columns--;
+                }
 
-                    if (val1 && val1 === val2) {
-                        var newValue = val1 * 2;
-                        $('#' + rows + columns).text(newValue);
-                        $('#' + rows + (columns - 1)).text('');
-                    };
+                var nextColumns = columns - 1;
+
+                while ($('#' + rows + nextColumns).text() == '' && nextColumns >= 0) {
+                    nextColumns--;
+                }
+
+                var val1 = $('#' + rows + columns).text();
+                var val2 = $('#' + rows + nextColumns).text();
+
+                if (val1 && val1 === val2) {
+                    var newValue = val1 * 2;
+                    $('#' + rows + columns).text(newValue);
+                    $('#' + rows + nextColumns).text('');
                 };
             };
         };
 
         function mergeDown() {
-            for (var rows = 3; rows >= 0; rows--) {
-                for (var columns = 0; columns < 4; columns++) {
-                    var val1 = $('#' + rows + columns).text();
-                    var val2 = $('#' + (rows - 1) + columns).text();
+            for (var columns = 0; columns < 4; columns++) {
+                var rows = 3;
+                while ($('#' + rows + columns).text() == '' && rows >= 0) {
+                    rows--;
+                }
 
-                    if (val1 && val1 === val2) {
-                        var newValue = val1 * 2;
-                        $('#' + rows + columns).text(newValue);
-                        $('#' + (rows - 1) + columns).text('');
-                    };
+                var nextRows = rows - 1;
+
+                while ($('#' + nextRows + columns).text() == '' && nextRows >= 0) {
+                    nextRows--;
+                }
+
+                var val1 = $('#' + rows + columns).text();
+                var val2 = $('#' + nextRows + columns).text();
+
+                if (val1 && val1 === val2) {
+                    var newValue = val1 * 2;
+                    $('#' + rows + columns).text(newValue);
+                    $('#' + nextRows + columns).text('');
                 };
             };
         };
