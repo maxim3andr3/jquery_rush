@@ -27,5 +27,16 @@
         };
         gridCreation();
         randomCells(2);
+ 
+        function movement() {
+            var keyPressed;
+
+            document.addEventListener('keydown', function(key) {
+                var code = key.keyCode;
+                if (code === 37 || code === 38 || code === 39 || code ===40) {
+                    keyPressed = key;
+                };
+            });
+        };
     };
 }(jQuery));
