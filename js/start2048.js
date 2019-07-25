@@ -7,7 +7,8 @@
                 };
             };
         };
-        
+        gridCreation();
+
         function randomCells(number) {
             for (var i = 0; i < number; i++) {
                 var rows = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
@@ -25,7 +26,6 @@
                 $('#' + rows + columns).html(Math.random() < 0.9 ? 2 : 4);
             };
         };
-        gridCreation();
         randomCells(2);
 
         document.addEventListener('keydown', function(key) {
@@ -33,27 +33,69 @@
             var code = key.keyCode;
 
             if (code === 37 || code === 38 || code === 39 || code ===40) {
-                keyPressed = key;
-            };
-
-            switch (keyPressed) {
-                case 37:
-                    movement(left);
-                    break;
-                case 38:
-                    movement(top);
-                    break;
-                case 39:
-                    movement(right);
-                    break;
-                case 40:
-                    movement(down);
-                    break;
+                switch (code) {
+                    case 37:
+                        movementLeft();
+                        break;
+                    case 38:
+                        movementTop();
+                        break;
+                    case 39:
+                        movementRight();
+                        break;
+                    case 40:
+                        movementDown();
+                        break;
+                };
             };
         });
 
-        function movement(move) {
+        function movementLeft() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 4; columns > 0; columns--) {
+                    while ($('#' + rows + columns).text() !== '' && $('#' + rows + (columns - 1)).text() === '' && (columns - 1) >= 0) {
+                        var actualPos = $('#' + rows + columns).text();
+                        var newPos = $('#' + rows + (columns - 1)).text(actualPos);
+                        actualPos = $('#' + rows + columns).text('');
+                    };
+                };
+            };
+        };
 
+        function movementTop() {
+            for (var rows = 4; rows > 0; rows--) {
+                for (var columns = 0; columns < 4; columns++) {
+                    while ($('#' + rows + columns).text() !== '' && $('#' + (rows - 1) + columns).text() === '' && (rows - 1) >= 0) {
+                        var actualPos = $('#' + rows + columns).text();
+                        var newPos = $('#' + (rows - 1) + columns).text(actualPos);
+                        actualPos = $('#' + rows + columns).text('');
+                    };
+                };
+            };
+        };
+
+        function movementRight() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 0; columns < 4; columns++) {
+                    while ($('#' + rows + columns).text() !== '' && $('#' + rows + (columns + 1)).text() === '' && (columns + 1) < 4) {
+                        var actualPos = $('#' + rows + columns).text();
+                        var newPos = $('#' + rows + (columns + 1)).text(actualPos);
+                        actualPos = $('#' + rows + columns).text('');
+                    };
+                };
+            };
+        };
+
+        function movementDown() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 0; columns < 4; columns++) {
+                    while ($('#' + rows + columns).text() !== '' && $('#' + (rows + 1) + columns).text() === '' && (rows + 1) < 4) {
+                        var actualPos = $('#' + rows + columns).text();
+                        var newPos = $('#' + (rows + 1) + columns).text(actualPos);
+                        actualPos = $('#' + rows + columns).text('');
+                    };
+                };
+            };
         };
     };
 }(jQuery));
