@@ -52,10 +52,15 @@
 
         function movementLeft() {
             for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 4; columns > 0; columns--) {
-                    while ($('#' + rows + columns).text() !== '' && $('#' + rows + (columns - 1)).text() === '' && (columns - 1) >= 0) {
+                for (var columns = 0; columns < 4; columns++) {
+                    var temp = columns - 1;
+                    while (temp >= 0 && $('#' + rows + temp).text() == '') {
+                        temp--;
+                    }
+                    temp++;
+                    if ($('#' + rows + columns).text() !== '' && $('#' + rows + temp).text() === '' && temp >= 0) {
                         var actualPos = $('#' + rows + columns).text();
-                        var newPos = $('#' + rows + (columns - 1)).text(actualPos);
+                        var newPos = $('#' + rows + temp).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
                     };
                 };
@@ -63,11 +68,16 @@
         };
 
         function movementTop() {
-            for (var rows = 4; rows > 0; rows--) {
+            for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
-                    while ($('#' + rows + columns).text() !== '' && $('#' + (rows - 1) + columns).text() === '' && (rows - 1) >= 0) {
+                    var temp = rows - 1;
+                    while (temp >= 0 && $('#' + temp + columns).text() == '') {
+                        temp--;
+                    }
+                    temp++;
+                    if ($('#' + rows + columns).text() !== '' && $('#' + temp + columns).text() === '' && temp >= 0) {
                         var actualPos = $('#' + rows + columns).text();
-                        var newPos = $('#' + (rows - 1) + columns).text(actualPos);
+                        var newPos = $('#' + temp + columns).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
                     };
                 };
@@ -76,10 +86,15 @@
 
         function movementRight() {
             for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 0; columns < 4; columns++) {
-                    while ($('#' + rows + columns).text() !== '' && $('#' + rows + (columns + 1)).text() === '' && (columns + 1) < 4) {
+                for (var columns = 4; columns >= 0; columns--) {
+                    var temp = columns + 1;
+                    while (temp < 4 && $('#' + rows + temp).text() == '') {
+                        temp++;
+                    }
+                    temp--;
+                    if ($('#' + rows + columns).text() !== '' && $('#' + rows + temp).text() === '' && temp < 4) {
                         var actualPos = $('#' + rows + columns).text();
-                        var newPos = $('#' + rows + (columns + 1)).text(actualPos);
+                        var newPos = $('#' + rows + temp).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
                     };
                 };
@@ -87,11 +102,16 @@
         };
 
         function movementDown() {
-            for (var rows = 0; rows < 4; rows++) {
+            for (var rows = 4; rows >= 0; rows--) {
                 for (var columns = 0; columns < 4; columns++) {
-                    while ($('#' + rows + columns).text() !== '' && $('#' + (rows + 1) + columns).text() === '' && (rows + 1) < 4) {
+                    var temp = rows + 1;
+                    while (temp < 4 && $('#' + temp + columns).text() == '') {
+                        temp++;
+                    }
+                    temp--;
+                    while ($('#' + rows + columns).text() !== '' && $('#' + temp + columns).text() === '' && temp < 4) {
                         var actualPos = $('#' + rows + columns).text();
-                        var newPos = $('#' + (rows + 1) + columns).text(actualPos);
+                        var newPos = $('#' + temp + columns).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
                     };
                 };
