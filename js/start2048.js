@@ -35,22 +35,22 @@
             if (code === 37 || code === 38 || code === 39 || code ===40) {
                 switch (code) {
                     case 37:
-                        movementLeft();
+                        moveLeft();
                         break;
                     case 38:
-                        movementTop();
+                        moveTop();
                         break;
                     case 39:
-                        movementRight();
+                        moveRight();
                         break;
                     case 40:
-                        movementDown();
+                        moveDown();
                         break;
                 };
             };
         });
 
-        function movementLeft() {
+        function moveLeft() {
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = columns - 1;
@@ -67,7 +67,7 @@
             };
         };
 
-        function movementTop() {
+        function moveTop() {
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = rows - 1;
@@ -84,9 +84,9 @@
             };
         };
 
-        function movementRight() {
+        function moveRight() {
             for (var rows = 0; rows < 4; rows++) {
-                for (var columns = 4; columns >= 0; columns--) {
+                for (var columns = 3; columns >= 0; columns--) {
                     var temp = columns + 1;
                     while (temp < 4 && $('#' + rows + temp).text() == '') {
                         temp++;
@@ -101,8 +101,8 @@
             };
         };
 
-        function movementDown() {
-            for (var rows = 4; rows >= 0; rows--) {
+        function moveDown() {
+            for (var rows = 3; rows >= 0; rows--) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = rows + 1;
                     while (temp < 4 && $('#' + temp + columns).text() == '') {
