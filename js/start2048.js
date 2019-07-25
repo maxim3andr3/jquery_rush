@@ -35,15 +35,19 @@
             if (code === 37 || code === 38 || code === 39 || code ===40) {
                 switch (code) {
                     case 37:
+                        mergeLeft();
                         moveLeft();
                         break;
                     case 38:
+                        mergeTop();
                         moveTop();
                         break;
                     case 39:
+                        mergeRight();
                         moveRight();
                         break;
                     case 40:
+                        mergeDown();
                         moveDown();
                         break;
                 };
@@ -113,6 +117,66 @@
                         var actualPos = $('#' + rows + columns).text();
                         var newPos = $('#' + temp + columns).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
+                    };
+                };
+            };
+        };
+
+        function mergeLeft() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 0; columns < 4; columns++) {
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + rows + (columns + 1)).text();
+
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + rows + (columns + 1)).text('');
+                    };
+                };
+            };
+        };
+
+        function mergeTop() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 0; columns < 4; columns++) {
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + (rows + 1) + columns).text();
+
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + (rows + 1) + columns).text('');
+                    };
+                };
+            };
+        };
+
+        function mergeRight() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 3; columns >= 0; columns--) {
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + rows + (columns - 1)).text();
+
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + rows + (columns - 1)).text('');
+                    };
+                };
+            };
+        };
+
+        function mergeDown() {
+            for (var rows = 3; rows >= 0; rows--) {
+                for (var columns = 0; columns < 4; columns++) {
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + (rows - 1) + columns).text();
+
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + (rows - 1) + columns).text('');
                     };
                 };
             };
