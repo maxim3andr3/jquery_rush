@@ -8,6 +8,8 @@
 }
 
 .grid {
+    width: 125px;
+    height: 125px;
     display: flex;
     font-size: 2em;
     border: 1px solid black;
