@@ -1,5 +1,8 @@
 (function($) {
     $.fn.start2048 = function() {
+        var moveOk;
+        var mergeOk;
+
         function gridCreation() {
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
@@ -32,29 +35,42 @@
             var keyPressed;
             var code = key.keyCode;
 
-            if (code === 37 || code === 38 || code === 39 || code ===40) {
+            if (code === 37 || code === 38 || code === 39 || code === 40) {
                 switch (code) {
                     case 37:
                         mergeLeft();
                         moveLeft();
+                        if (moveOk === true || mergeOk === true) {
+                            randomCells(1);
+                        };
                         break;
                     case 38:
                         mergeTop();
                         moveTop();
+                        if (moveOk === true || mergeOk === true) {
+                            randomCells(1);
+                        };
                         break;
                     case 39:
                         mergeRight();
                         moveRight();
+                        if (moveOk === true || mergeOk === true) {
+                            randomCells(1);
+                        };
                         break;
                     case 40:
                         mergeDown();
                         moveDown();
+                        if (moveOk === true || mergeOk === true) {
+                            randomCells(1);
+                        };
                         break;
                 };
             };
         });
 
         function moveLeft() {
+            moveOk = false;
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = columns - 1;
@@ -66,13 +82,14 @@
                         var actualPos = $('#' + rows + columns).text();
                         var newPos = $('#' + rows + temp).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
+                        moveOk = true;
                     };
                 };
             };
-            randomCells(1);
         };
 
         function moveTop() {
+            moveOk = false;
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = rows - 1;
@@ -84,13 +101,14 @@
                         var actualPos = $('#' + rows + columns).text();
                         var newPos = $('#' + temp + columns).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
+                        moveOk = true;
                     };
                 };
             };
-            randomCells(1);
         };
 
         function moveRight() {
+            moveOk = false;
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 3; columns >= 0; columns--) {
                     var temp = columns + 1;
@@ -102,13 +120,14 @@
                         var actualPos = $('#' + rows + columns).text();
                         var newPos = $('#' + rows + temp).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
+                        moveOk = true;
                     };
                 };
             };
-            randomCells(1);
         };
 
         function moveDown() {
+            moveOk = false;
             for (var rows = 3; rows >= 0; rows--) {
                 for (var columns = 0; columns < 4; columns++) {
                     var temp = rows + 1;
@@ -120,13 +139,14 @@
                         var actualPos = $('#' + rows + columns).text();
                         var newPos = $('#' + temp + columns).text(actualPos);
                         actualPos = $('#' + rows + columns).text('');
+                        moveOk = true;
                     };
                 };
             };
-            randomCells(1);
         };
 
         function mergeLeft() {
+            mergeOk = false;
             for (var rows = 0; rows < 4; rows++) {
                 for (var col = 0; col < 4; col++) {
                     var columns = col;
@@ -147,12 +167,14 @@
                         var newValue = val1 * 2;
                         $('#' + rows + columns).text(newValue);
                         $('#' + rows + nextColumns).text('');
+                        mergeOk = true;
                     };
                 };
             };
         };
 
         function mergeTop() {
+            mergeOk = false;
             for (var columns = 0; columns < 4; columns++) {
                 for (var row = 0; row < 4; row++) {
                     var rows = row;
@@ -173,12 +195,14 @@
                         var newValue = val1 * 2;
                         $('#' + rows + columns).text(newValue);
                         $('#' + nextRows + columns).text('');
+                        mergeOk = true;
                     };
                 };
             };
         };
 
         function mergeRight() {
+            mergeOk = false;
             for (var rows = 0; rows < 4; rows++) {
                 for (var column = 3; column >= 0; column--) {
                     var columns = column;
@@ -199,12 +223,14 @@
                         var newValue = val1 * 2;
                         $('#' + rows + columns).text(newValue);
                         $('#' + rows + nextColumns).text('');
+                        mergeOk = true;
                     };
                 };
             };
         };
 
         function mergeDown() {
+            mergeOk = false;
             for (var columns = 0; columns < 4; columns++) {
                 for (var row = 3; row >= 0; row--) {
                     var rows = row;
@@ -225,9 +251,34 @@
                         var newValue = val1 * 2;
                         $('#' + rows + columns).text(newValue);
                         $('#' + nextRows + columns).text('');
+                        mergeOk = true;
                     };
                 };
             };
         };
+
+        // function gameOver() {
+        //     var isTrue = false;
+        //     for (var rows = 0; rows < 4; rows++) {
+        //         for (columns = 0; columns < 4; columns++) {
+        //             var pos = $('#' + rows + columns).text();
+        //             var left = $('#' + rows + (columns - 1)).text();
+        //             var top = $('#' + (rows - 1) + columns).text();
+        //             var right = $('#' + rows + (columns + 1)).text();
+        //             var down = $('#' + (rows + 1) + columns).text();
+
+        //             if (pos != '' && left != '' && top != '' && right != '' && down != '') {
+        //                 if (pos != right && pos != top && pos != right && pos != down) {
+        //                     isTrue = true;
+        //                 } else {
+        //                     isTrue = false;
+        //                 }
+        //             } else {
+        //                 isTrue = false;
+        //             }
+        //         }
+        //     }
+        //     return isTrue;
+        // }
     };
 }(jQuery));
