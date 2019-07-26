@@ -1,7 +1,7 @@
 (function($) {
     $.fn.start2048 = function() {
-        var moveOk;
-        var mergeOk;
+        var moveOk; // global variable to determine if there was movement
+        var mergeOk; // global variable to determine if there was merge
 
         function gridCreation() {
             for (var rows = 0; rows < 4; rows++) {
@@ -258,7 +258,6 @@
         };
 
         // function gameOver() {
-        //     var isTrue = false;
         //     for (var rows = 0; rows < 4; rows++) {
         //         for (columns = 0; columns < 4; columns++) {
         //             var pos = $('#' + rows + columns).text();
@@ -268,17 +267,12 @@
         //             var down = $('#' + (rows + 1) + columns).text();
 
         //             if (pos != '' && left != '' && top != '' && right != '' && down != '') {
-        //                 if (pos != right && pos != top && pos != right && pos != down) {
-        //                     isTrue = true;
-        //                 } else {
-        //                     isTrue = false;
+        //                 if (pos != left && pos != top && pos != right && pos != down) {
+        //                     return true;
         //                 }
-        //             } else {
-        //                 isTrue = false;
         //             }
         //         }
         //     }
-        //     return isTrue;
         // }
     };
 }(jQuery));
