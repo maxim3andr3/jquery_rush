@@ -69,6 +69,7 @@
                     };
                 };
             };
+            randomCells(1);
         };
 
         function moveTop() {
@@ -86,6 +87,7 @@
                     };
                 };
             };
+            randomCells(1);
         };
 
         function moveRight() {
@@ -103,6 +105,7 @@
                     };
                 };
             };
+            randomCells(1);
         };
 
         function moveDown() {
@@ -120,6 +123,7 @@
                     };
                 };
             };
+            randomCells(1);
         };
 
         function mergeLeft() {
