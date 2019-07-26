@@ -128,96 +128,104 @@
 
         function mergeLeft() {
             for (var rows = 0; rows < 4; rows++) {
-                var columns = 0;
-                while ($('#' + rows + columns).text() == '' && columns < 4) {
-                    columns++;
-                }
+                for (var col = 0; col < 4; col++) {
+                    var columns = col;
+                    while ($('#' + rows + columns).text() == '' && columns < 4) {
+                        columns++;
+                    }
 
-                var nextColumns = columns + 1;
+                    var nextColumns = columns + 1;
+                    
+                    while ($('#' + rows + nextColumns).text() == '' && nextColumns < 4) {
+                        nextColumns++;
+                    }
+                    
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + rows + nextColumns).text();
 
-                while ($('#' + rows + nextColumns).text() == '' && nextColumns < 4) {
-                    nextColumns++;
-                }
-
-                var val1 = $('#' + rows + columns).text();
-                var val2 = $('#' + rows + nextColumns).text();
-
-                if (val1 && val1 === val2) {
-                    var newValue = val1 * 2;
-                    $('#' + rows + columns).text(newValue);
-                    $('#' + rows + nextColumns).text('');
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + rows + nextColumns).text('');
+                    };
                 };
             };
         };
 
         function mergeTop() {
             for (var columns = 0; columns < 4; columns++) {
-                var rows = 0;
-                while ($('#' + rows + columns).text() == '' && rows < 4) {
-                    rows++;
-                }
+                for (var row = 0; row < 4; row++) {
+                    var rows = row;
+                    while ($('#' + rows + columns).text() == '' && rows < 4) {
+                        rows++;
+                    }
 
-                var nextRows = rows + 1;
+                    var nextRows = rows + 1;
 
-                while ($('#' + nextRows + columns).text() == '' && nextRows < 4) {
-                    nextRows++;
-                }
+                    while ($('#' + nextRows + columns).text() == '' && nextRows < 4) {
+                        nextRows++;
+                    }
 
-                var val1 = $('#' + rows + columns).text();
-                var val2 = $('#' + nextRows + columns).text();
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + nextRows + columns).text();
 
-                if (val1 && val1 === val2) {
-                    var newValue = val1 * 2;
-                    $('#' + rows + columns).text(newValue);
-                    $('#' + nextRows + columns).text('');
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + nextRows + columns).text('');
+                    };
                 };
             };
         };
 
         function mergeRight() {
             for (var rows = 0; rows < 4; rows++) {
-                var columns = 3;
-                while ($('#' + rows + columns).text() == '' && columns >= 0) {
-                    columns--;
-                }
+                for (var column = 3; column >= 0; column--) {
+                    var columns = column;
+                    while ($('#' + rows + columns).text() == '' && columns >= 0) {
+                        columns--;
+                    }
 
-                var nextColumns = columns - 1;
+                    var nextColumns = columns - 1;
 
-                while ($('#' + rows + nextColumns).text() == '' && nextColumns >= 0) {
-                    nextColumns--;
-                }
+                    while ($('#' + rows + nextColumns).text() == '' && nextColumns >= 0) {
+                        nextColumns--;
+                    }
 
-                var val1 = $('#' + rows + columns).text();
-                var val2 = $('#' + rows + nextColumns).text();
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + rows + nextColumns).text();
 
-                if (val1 && val1 === val2) {
-                    var newValue = val1 * 2;
-                    $('#' + rows + columns).text(newValue);
-                    $('#' + rows + nextColumns).text('');
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + rows + nextColumns).text('');
+                    };
                 };
             };
         };
 
         function mergeDown() {
             for (var columns = 0; columns < 4; columns++) {
-                var rows = 3;
-                while ($('#' + rows + columns).text() == '' && rows >= 0) {
-                    rows--;
-                }
+                for (var row = 3; row >= 0; row--) {
+                    var rows = row;
+                    while ($('#' + rows + columns).text() == '' && rows >= 0) {
+                        rows--;
+                    }
 
-                var nextRows = rows - 1;
+                    var nextRows = rows - 1;
 
-                while ($('#' + nextRows + columns).text() == '' && nextRows >= 0) {
-                    nextRows--;
-                }
+                    while ($('#' + nextRows + columns).text() == '' && nextRows >= 0) {
+                        nextRows--;
+                    }
 
-                var val1 = $('#' + rows + columns).text();
-                var val2 = $('#' + nextRows + columns).text();
+                    var val1 = $('#' + rows + columns).text();
+                    var val2 = $('#' + nextRows + columns).text();
 
-                if (val1 && val1 === val2) {
-                    var newValue = val1 * 2;
-                    $('#' + rows + columns).text(newValue);
-                    $('#' + nextRows + columns).text('');
+                    if (val1 && val1 === val2) {
+                        var newValue = val1 * 2;
+                        $('#' + rows + columns).text(newValue);
+                        $('#' + nextRows + columns).text('');
+                    };
                 };
             };
         };
