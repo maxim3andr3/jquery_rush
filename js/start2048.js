@@ -43,12 +43,18 @@
                         if (moveOk === true || mergeOk === true) {
                             randomCells(1);
                         };
+                        if (gameOver === true) {
+                            alert('Game Over');
+                        };
                         break;
                     case 38:
                         mergeTop();
                         moveTop();
                         if (moveOk === true || mergeOk === true) {
                             randomCells(1);
+                        };
+                        if (gameOver === true) {
+                            alert('Game Over');
                         };
                         break;
                     case 39:
@@ -57,12 +63,18 @@
                         if (moveOk === true || mergeOk === true) {
                             randomCells(1);
                         };
+                        if (gameOver === true) {
+                            alert('Game Over');
+                        };
                         break;
                     case 40:
                         mergeDown();
                         moveDown();
                         if (moveOk === true || mergeOk === true) {
                             randomCells(1);
+                        };
+                        if (gameOver() === true) {
+                            alert('Game Over');
                         };
                         break;
                 };
@@ -257,22 +269,45 @@
             };
         };
 
-        // function gameOver() {
-        //     for (var rows = 0; rows < 4; rows++) {
-        //         for (columns = 0; columns < 4; columns++) {
-        //             var pos = $('#' + rows + columns).text();
-        //             var left = $('#' + rows + (columns - 1)).text();
-        //             var top = $('#' + (rows - 1) + columns).text();
-        //             var right = $('#' + rows + (columns + 1)).text();
-        //             var down = $('#' + (rows + 1) + columns).text();
+        function gameOver() {
+            var endGame = false;
+            for (var rows = 0; rows < 4; rows++) {
+                for (columns = 0; columns < 4; columns++) {
+                    var pos = $('#' + rows + columns).text();
 
-        //             if (pos != '' && left != '' && top != '' && right != '' && down != '') {
-        //                 if (pos != left && pos != top && pos != right && pos != down) {
-        //                     return true;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+                    if ((columns - 1) < 0) {
+                        var left = $('#' + rows + (columns - 1)).text('1');
+                    } else {
+                        var left = $('#' + rows + (columns - 1)).text();
+                    }
+                    if ((rows - 1) < 0) {
+                        var top = $('#' + (rows - 1) + columns).text('1');
+                    } else {
+                        var top = $('#' + (rows - 1) + columns).text();
+                    }
+                    if ((columns + 1) > 3) {
+                        var right = $('#' + rows + (columns + 1)).text('1');
+                    } else {
+                        var right = $('#' + rows + (columns + 1)).text();
+                    }
+                    if ((rows + 1) > 3) {
+                        var down = $('#' + (rows + 1) + columns).text('1');
+                    } else {
+                        var down = $('#' + (rows + 1) + columns).text();
+                    }
+
+                    if (pos != '' && left != '' && top != '' && right != '' && down != '') {
+                        if (pos != left && pos != top && pos != right && pos != down) {
+                            endGame = true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        return false;
+                    }
+                }
+            }
+            return endGame;
+        }
     };
 }(jQuery));
