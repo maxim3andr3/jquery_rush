@@ -33,8 +33,9 @@
                 $('#' + rows + columns).html(Math.random() < 0.9 ? 2 : 4);
             };
         };
-        randomCells(2);
+        randomCells(2); // adding 2 random numbers at the creation of the grid
 
+        // function which add events according to the key pressed
         document.addEventListener('keydown', function(key) {
             var code = key.keyCode;
 
@@ -292,6 +293,7 @@
             };
         };
 
+        // game wins if the player reaches 2048
         function gameWin() {
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
@@ -302,6 +304,7 @@
             };
         };
 
+        // game over if no moves or merges possibles
         function gameOver() {
             var endGame = false;
             for (var rows = 0; rows < 4; rows++) {
