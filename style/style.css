@@ -1,10 +1,27 @@
+@font-face {
+    font-family: neon;
+    src: url('font/hellodenverdisplayregular_v1.6.eot');
+    src: url('font/hellodenverdisplayregular_v1.6.eot?#iefix') format('embedded-opentype'),
+         url('font/hellodenverdisplayregular_v1.6.woff') format('woff'),
+         url('font/hellodenverdisplayregular_v1.6.ttf') format('truetype'),
+         url('font/hellodenverdisplayregular_v1.6.svg#HELLODENVERDISPLAYREGULARRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url(wall.jpg);
+    background-size: auto 100%;
+}
+
 #container {
     width: 532px;
+    height: auto;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(4, 125px);
     grid-gap: 10px;
-    background-color: dodgerblue;
+    border-radius: 15px;
 }
 
 .grid {
@@ -12,11 +29,53 @@
     height: 125px;
     display: flex;
     font-size: 2em;
-    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #f25757;
     align-items: center;
     justify-content: center;
+    color: #ffd8d8;
 }
 
 .score {
     text-align: center;
+    font-size: 2em;
+    color: #ffd8d8;
+    margin: 0 0 10px 0;
+}
+
+.wrapper {
+    width: 100%;
+    height: 25%;
+    margin: 20px 0 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: auto 100%;
+}
+
+.neon-wrapper {
+    box-shadow:
+    0 0 0.1vw  0.4vw #fff7f7,   
+    0 0 0.4vw  0.6vw #e97272, 
+    0 0   4vw  0.4vw #e50b0b,
+    inset 0 0 1.5vw  0.4vw #e50b0b,
+    inset 0 0 0.4vw  0.2vw #e97272,
+    inset 0 0 0.5vw  0.2vw #fff7f7;
+    border-radius: 1.5rem;
+}
+
+.neon-text {
+    font-family: neon;
+    text-align: center;
+    font-size: 14rem;
+    padding: 0 3.5rem 0 3.5rem;
+    color: #ffd8d8;
+    text-shadow: 
+    .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8, 
+    .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .4vw 0vw   0vw #f25757,
+    .1vw 0vw  .1vw #f25757, .2vw 0vw  .1vw #f25757, .4vw 0vw  .1vw #f25757,
+    .1vw 0vw   2vw #f25757, .2vw 0vw   2vw #f25757, .4vw 0vw   2vw #f25757, 
+    .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b, 
+    .1vw 0vw   5vw #e50b0b, .2vw 0vw  20vw #e50b0b, .4vw 0vw  10vw #e50b0b,
+    .1vw 0vw  10vw #e50b0b, .2vw 0vw  30vw #e50b0b, .4vw 0vw  10vw #e50b0b;
 }
