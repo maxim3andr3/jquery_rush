@@ -98,6 +98,7 @@
             };
         });
 
+        // moves functions
         function moveLeft() {
             moveOk = false;
             for (var rows = 0; rows < 4; rows++) {
@@ -174,6 +175,7 @@
             };
         };
 
+        // merge functions
         function mergeLeft() {
             mergeOk = false;
             for (var rows = 0; rows < 4; rows++) {
