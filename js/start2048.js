@@ -6,7 +6,8 @@
 
         // function to create the grid
         function gridCreation() {
-            $('#container').before('<div class="score">Score : ' + '<span id="newScore">' + score + '</span>' + '</div>');
+            $('.wrapper').append('<div class="neon-wrapper"><div class="neon-text">2048</div></div>');
+            $('.wrapper').after('<div class="score">Score : ' + '<span id="newScore">' + score + '</span>' + '</div>');
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     $('#container').append('<div class="grid" id="' + rows + columns + '"></div>');
