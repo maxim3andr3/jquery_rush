@@ -49,6 +49,9 @@
                         if (gameOver === true) {
                             alert('Game Over');
                         };
+                        if (gameWin() === true) {
+                            alert('You win !');
+                        };
                         break;
                     case 38:
                         mergeTop();
@@ -58,6 +61,9 @@
                         };
                         if (gameOver === true) {
                             alert('Game Over');
+                        };
+                        if (gameWin() === true) {
+                            alert('You win !');
                         };
                         break;
                     case 39:
@@ -69,6 +75,9 @@
                         if (gameOver === true) {
                             alert('Game Over');
                         };
+                        if (gameWin() === true) {
+                            alert('You win !');
+                        };
                         break;
                     case 40:
                         mergeDown();
@@ -78,6 +87,9 @@
                         };
                         if (gameOver() === true) {
                             alert('Game Over');
+                        };
+                        if (gameWin() === true) {
+                            alert('You win !');
                         };
                         break;
                 };
@@ -280,6 +292,16 @@
             };
         };
 
+        function gameWin() {
+            for (var rows = 0; rows < 4; rows++) {
+                for (var columns = 0; columns < 4; columns++) {
+                    if ($('#' + rows + columns).text() === '2048') {
+                        return true;
+                    };
+                };
+            };
+        };
+
         function gameOver() {
             var endGame = false;
             for (var rows = 0; rows < 4; rows++) {
@@ -315,10 +337,10 @@
                         }
                     } else {
                         return false;
-                    }
-                }
-            }
+                    };
+                };
+            };
             return endGame;
-        }
+        };
     };
 }(jQuery));
