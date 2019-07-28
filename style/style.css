@@ -33,7 +33,8 @@ body {
     background-color: #f25757;
     align-items: center;
     justify-content: center;
-    color: #ffd8d8;
+    color: white;
+    opacity: 0.8;
 }
 
 .score {
