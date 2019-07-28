@@ -2,8 +2,11 @@
     $.fn.start2048 = function() {
         var moveOk; // global variable to determine if there was movement
         var mergeOk; // global variable to determine if there was merge
+        var score = 0; // global variable to get the score of the player
 
+        // function to create the grid
         function gridCreation() {
+            $('#container').before('<div class="score">Score : ' + '<span id="newScore">' + score + '</span>' + '</div>');
             for (var rows = 0; rows < 4; rows++) {
                 for (var columns = 0; columns < 4; columns++) {
                     $('#container').append('<div class="grid" id="' + rows + columns + '"></div>');
@@ -12,6 +15,7 @@
         };
         gridCreation();
 
+        // function to add random number(s) into the grid
         function randomCells(number) {
             for (var i = 0; i < number; i++) {
                 var rows = Math.floor(Math.random() * (3 - 0 + 1)) + 0;
@@ -32,7 +36,6 @@
         randomCells(2);
 
         document.addEventListener('keydown', function(key) {
-            var keyPressed;
             var code = key.keyCode;
 
             if (code === 37 || code === 38 || code === 39 || code === 40) {
@@ -180,6 +183,8 @@
                         $('#' + rows + columns).text(newValue);
                         $('#' + rows + nextColumns).text('');
                         mergeOk = true;
+                        score += newValue;
+                        $('#newScore').text(score);
                     };
                 };
             };
@@ -208,6 +213,8 @@
                         $('#' + rows + columns).text(newValue);
                         $('#' + nextRows + columns).text('');
                         mergeOk = true;
+                        score += newValue;
+                        $('#newScore').text(score);
                     };
                 };
             };
@@ -236,6 +243,8 @@
                         $('#' + rows + columns).text(newValue);
                         $('#' + rows + nextColumns).text('');
                         mergeOk = true;
+                        score += newValue;
+                        $('#newScore').text(score);
                     };
                 };
             };
@@ -264,6 +273,8 @@
                         $('#' + rows + columns).text(newValue);
                         $('#' + nextRows + columns).text('');
                         mergeOk = true;
+                        score += newValue;
+                        $('#newScore').text(score);
                     };
                 };
             };
